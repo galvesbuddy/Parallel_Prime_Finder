@@ -42,7 +42,7 @@ int main(){
     clock_gettime(CLOCK_MONOTONIC, &end);
     double time = (end.tv_sec - start.tv_sec) + ((end.tv_nsec - start.tv_nsec) / 1e9);
 
-    for(int i = 100000000; i > 1; i--){
+    for(int i = 100000000 - 1; i > 1; i--){
         if(IS_BIT_SET(i) == 0){
             if(topTenFlag < 10){
                 largestPrimes[9 - topTenFlag] = i; // For ascending order
