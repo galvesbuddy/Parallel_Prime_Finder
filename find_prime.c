@@ -33,7 +33,7 @@ int main(){
     int topTenFlag = 0;
 
     clock_gettime(CLOCK_MONOTONIC, &start);
-    for(int t = 0; t < THREADS; t++){ //TODO Try to complete it with one thread because 8 threads is issues rn 
+    for(int t = 0; t < THREADS; t++){
         pthread_create(&thread[t], NULL, Sieve, NULL);
     }
     for(int t = 0; t < THREADS; t++){
@@ -41,13 +41,6 @@ int main(){
     }
     clock_gettime(CLOCK_MONOTONIC, &end);
     double time = (end.tv_sec - start.tv_sec) + ((end.tv_nsec - start.tv_nsec) / 1e9);
-    printf("%f seconds\n", time);
-
-    for(int i = 0; i < 20; i++){
-        int is_composite = ((bitSet[0] & (1ULL << i)) != 0);
-        printf("%d ", is_composite);
-    }
-    printf("\n");
 
     for(int i = 100000000; i > 1; i--){
         if(IS_BIT_SET(i) == 0){
@@ -61,15 +54,13 @@ int main(){
         }
     }
 
-    printf("\n%d primes\n", totalPrimes ); // Subtract 2 for the 0 and 1
-    printf("%lld\n", primesSum);
-    for(int i = 0; i < 10; i++){
-        printf("%d ", largestPrimes[i]);
-    }
-    printf("\n");
-
     FILE *out = fopen(outFileName, "w");
-    // TODO Print to file (execution time, total number of primes found, sum of all the primes found, top ten largest primes in ascending order (ex. 1,2,3,4,5))
+    fprintf(out, "%f seconds\n", time);
+    fprintf(out, "%d primes\n", totalPrimes ); // Subtract 2 for the 0 and 1
+    fprintf(out, "Summation of Primes = %lld\n", primesSum);
+    for(int i = 0; i < 10; i++){
+        fprintf(out, "%d: %d ", i + 1, largestPrimes[i]);
+    }
     fclose(out);
 }
 
