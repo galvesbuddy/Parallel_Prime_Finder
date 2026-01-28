@@ -35,10 +35,4 @@
   ### Improvements?
   With this current amount of input data, I do not think many improvements could be made but I have not searched that deep. Now for a big number, maybe there can be a way of saving the early "static" numbers that we know, such as the start of the crossing out like "p + p", and apply that to the sieve and save some redundant processing at the start?
   ### LLM Assistance?
-  I did use an LLM to assist me and it was insanely useful. Matter fact, the LLM gave me the idea to use a bitset (something I have not heard too much of) to cut down massively on the size and speed of the data structure used rather than using a full byte for each number!
-
-
-6. Reflection Reflect briefly on your experience completing this assignment. Consider:
-  • What you learned about parallel programming
-  • What you might improve in a future version
-  • Whether you used any tools (e.g., AI assistants) and how you verified their output
+  I did use an LLM to assist me and it was insanely useful. Matter fact, the LLM gave me the idea to use a bitset (something I have not heard too much of) to cut down massively on the size and speed of the data structure used rather than using a full byte for each number! Since it was also not common to find much knowledge on how/what/why for a bitset and it walked me through the whole thing from a beginner level of setting bits to understanding that setting bits must be atomic as well. In terms of how i verified my output, well I tested it throughout the assignment inching closer to the correct outputs that were online.
