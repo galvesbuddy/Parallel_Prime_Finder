@@ -26,7 +26,7 @@
 ## Thread Design and Load Balancing
   As stated previously above, the threads were being scheduled dynamically. When they were in function they would keep looping, going back to the top, grabbing the counter, and repeat the process until the counter limit was reached. To decide how much I wanted to increment by i simply grabbed the max number I was going to check (sqrt(10^8)) divided it by 8 (# of Threads) and found an even number so each thread has the same amount of function loops.
   
-## Why Sieve of Eratosthenes
+## Why Sieve of Eratosthenes?
   Honestly, this was one of the most basic sieves to implement as well as super efficient and well known with the CS community. As it was my first time working with multi-threading I did not wish to struggle with two things at once, which is not to say I did not struggle with the implementation of the sieve (because i did). The sieve has a O(N * Log * Log(N)).
 
   ## Reflection
