@@ -29,7 +29,7 @@
 ## Why Sieve of Eratosthenes?
   Honestly, this was one of the most basic sieves to implement as well as super efficient and well known with the CS community. As it was my first time working with multi-threading I did not wish to struggle with two things at once, which is not to say I did not struggle with the implementation of the sieve (because i did). The sieve has a O(N * Log * Log(N)).  
 
-  ## Reflection
+## Reflection
   ### Learned About Parallel Programming
   I have not learned as much as solidify my knowledge of parallel programming with this project as the book and slides helped greatly to introduce me to this. Though there is one thing that stands out as I completed this project which was my method truly parallel programming or was it just concurrency? My confusion was "how is it parallel if the threads are not grabbing the counter at the literal exact time (which would also not be possible with an atomic counter)?" After a bit of digging, the algorithm working with each thread was the parallel processing not the grabbing of the value of the counter!  
   ### Improvements?
