@@ -15,43 +15,29 @@
   The biggest contribution to the low execution time, if we ignore size of input, would be the algorithm and choices of optimizations within it. In terms of thread Workloads, each thread is given a range of 50 starting from 2 and ending at 10,000 (last thread has a range of 48). This allows Each thread to have about 25 runs each. If we increase the increments/range to about 100 its a few milliseconds slower and doesnt change much from lowering the range either.
 
 ## Experimental Evaluation
-  
 |  | 1 Threads | 8 Thread |
 | :--- | :--- | :--- |
-| Content under Header 1 | Content under Header 2 |
-| Content under Header 1 | Content under Header 2 |
-| Content under Header 1 | Content under Header 2 |
-
+| Average Execution Time (Seconds) | .45 | .29 |
+| Number of Primes Found | 5761455 | 5761455 |
+| Sum of all Primes | 279209790387276 | 279209790387276 |  
   
+  We notice a stark difference from 1 thread to 8 threads with a .15 second difference and would see a greater difference if the numbers checked, n, was higher. The interesting thing to notice is that if the threads were cut down from 8 to 2, it would give pretty much the same average time. That tracks all the way up to 9-10 threads which right after begans to fall off again and take a little bit longer to execute. A clear example that more does not equal better in this case as well as not equaling the same performance gains as the previous number of threads gives compared to ITS previous. Perhaps if we had more numbers to check and needed more processing power more threads would offer more gains, but at this amount of data, it is unneeded.
+
+## Thread Design and Load Balancing
+  As stated previously above, the threads were being scheduled dynamically. When they were in function they would keep looping, going back to the top, grabbing the counter, and repeat the process until the counter limit was reached. To decide how much I wanted to increment by i simply grabbed the max number I was going to check (sqrt(10^8)) divided it by 8 (# of Threads) and found an even number so each thread has the same amount of function loops.
+  
+## Why Sieve of Eratosthenes
+  Honestly, this was one of the most basic sieves to implement as well as super efficient and well known with the CS community. As it was my first time working with multi-threading I did not wish to struggle with two things at once, which is not to say I did not struggle with the implementation of the sieve (because i did). The sieve has a O(N * Log * Log(N)).
+
+  ## Reflection
+  ### Learned About Parallel Programming
+  I have not learned as much as solidify my knowledge of parallel programming with this project as the book and slides helped greatly to introduce me to this. Though there is one thing that stands out as I completed this project which was my method truly parallel programming or was it just concurrency? My confusion was "how is it parallel if the threads are not grabbing the counter at the literal exact time (which would also not be possible with an atomic counter)?" After a bit of digging, the algorithm working with each thread was the parallel processing not the grabbing of the value of the counter!
+  ### Improvements?
+  With this current amount of input data, I do not think many improvements could be made but I have not searched that deep. Now for a big number, maybe there can be a way of saving the early "static" numbers that we know, such as the start of the crossing out like "p + p", and apply that to the sieve and save some redundant processing at the start?
+  ### LLM Assistance?
+  I did use an LLM to assist me and it was insanely useful. Matter fact, the LLM gave me the idea to use a bitset (something I have not heard too much of) to cut down massively on the size and speed of the data structure used rather than using a full byte for each number!
 
 
-
-3. Experimental Evaluation Summarize the performance of your program based on
-actual execution. Your evaluation should include both your 8-threaded solution and a
-baseline single-threaded version of your program. Address the following points:
-  • Total execution time for both versions
-  • Number of primes found and their sum (should be identical in both versions)
-  • Observations about thread performance, including any bottlenecks or uneven
-workload distribution
-  • Comparison of performance between the multi-threaded and single-threaded
-  implementations:
-    o How much faster (or slower) is the parallel version?
-    o Are there diminishing returns or overhead introduced by threading?
-    o What factors affect the scalability of your solution?
-  • Discussion of scalability:
-    o How might performance change with different input sizes?
-    o What would happen if you increased or decreased the number of threads?
-    You may include tables, charts, or graphs to support your analysis.
-4. Thread Design and Load Balancing Explain how you ensured that each thread
-received a fair share of the work. Consider:
-  • How you partitioned the input range
-  • Whether you used static or dynamic scheduling
-  • Any challenges you encountered in balancing execution time across threads
-5. Prime-Finding Algorithm Describe the algorithm you used to identify prime
-numbers. Address:
-  • Why you chose this algorithm
-  • Its time complexity
-  • Any optimizations you implemented (e.g., skipping even numbers, using a sieve)
 6. Reflection Reflect briefly on your experience completing this assignment. Consider:
   • What you learned about parallel programming
   • What you might improve in a future version
