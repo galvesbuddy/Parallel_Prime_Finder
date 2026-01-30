@@ -1,6 +1,6 @@
 ## Compilation Instruction
   This program uses "pthread.h" library, therefore it does not support windows natively and you will have to change your compiler so that it can compile "pthread.h".
-  Other than that, all you have to do is compile and run it which differs from compiler to compiler. For example, using GCC as the compiler and Windows as the OS you can open up your terminal, go to the directory where the .c file is located, and type into the terminal - "gcc find_prime.c" and then "a.exe (or whatever it is name)" and it will create a primes.txt file within the same directory.
+  Other than that, all you have to do is compile and run it which can differs from compiler to compiler. For example, using GCC as the compiler and Windows as the OS you can open up your terminal, go to the directory where the .c file is located, and type into the terminal - "gcc find_prime.c" and then "a.exe (or whatever it is name)" and it will create a primes.txt file within the same directory.
 
 ## My Approach
   ### Structure
