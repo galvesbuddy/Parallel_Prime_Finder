@@ -1,7 +1,3 @@
-// Gabriel Alves
-// Day-Month-Year = 27/01/2026
-// COP 4520 - Assignment 1
-
 #include <stdio.h>
 #include <time.h> // For execution time
 #include <stdint.h> // For the explicit bit types
